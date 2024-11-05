@@ -1,0 +1,16 @@
+{
+  "name": "organizador-de-tiempo",
+  "version": "1.0.0",
+  "description": "Una aplicación para organizar el tiempo",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make It</title>
+    <link rel="stylesheet" href="styles28.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!--     Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Freshman&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="assets/img/logo.png" alt="Logo de Make It" class="logo">
+                <h1>Make It</h1>
+            </a>
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://api.whatsapp.com/send?phone=+573112329431&text=Hola%20Boutique%20Movil%20vengo%20de%20tu%20tarjeta%20digital" target="_blank" class="btn btn-contact">Contáctanos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main-container">
+        <aside class="sidebar">
+            <section id="task-section">
+                <h2>Agregar Tarea</h2>
+                <form id="task-form">
+                    <label for="task-name">Nombre de la tarea:</label>
+                    <input type="text" name="text" id="task-name" class="input" placeholder="Type here...">
+                    <label for="task-time">Tiempo estimado (horas):</label>
+                    <input type="number" id="task-time" class="input" min="0" step="1" required placeholder="Type here...">
+                    <label for="task-deadline">Fecha de entrega:</label>
+                    <input type="text" id="task-deadline" class="input datepicker" placeholder="Selecciona una fecha">
+                    <button class="custom-button">Agregar</button>
+                </form>
+            </section>
+            <section id="activity-section">
+                <h2>Agregar Actividad</h2>
+                <form id="activity-form">
+                    <label for="activity-name">Nombre de la actividad:</label>
+                    <input type="text" name="text" id="activity-name" class="input" placeholder="Type here...">
+                    <label for="activity-time">Tiempo semanal (horas):</label>
+                    <input type="number" id="activity-time" class="input" min="0" step="1" required placeholder="Type here...">
+                    <button class="custom-button">Agregar</button>
+                </form>
+            </section>
+        </aside>
+        <main>
+            <section id="distribution-section">
+                <h2>Distribución de Tiempo</h2>
+                <div id="task-list"></div>
+                <p id="available-time"></p>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        flatpickr(".datepicker", {
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+    </script>
+</body>
+</html>
