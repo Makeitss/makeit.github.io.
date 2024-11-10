@@ -15,13 +15,6 @@
     <div class="container">
         <div class="card">
             <h4 class="title">Registro</h4>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div class="alert alert-danger">
-                        {{ messages[0] }}
-                    </div>
-                {% endif %}
-            {% endwith %}
             <form action="index.html" method="POST">
                 <div class="field">
                     <svg class="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
