@@ -1,0 +1,101 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('assets/img/fondologin.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('path/to/your/background-image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.card {
+    width: 300px;
+    padding: 2rem;
+    text-align: center;
+    background: #2a2b38;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    margin-bottom: 2rem;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.field {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    background-color: #1f2029;
+    border-radius: 4px;
+    padding: .5em 1em;
+}
+
+.input-icon {
+    height: 1em;
+    width: 1em;
+    fill: #7ed957;
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+    padding: 0.5em;
+}
+
+.btn {
+    margin: 1rem auto;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: .8em;
+    text-transform: uppercase;
+    padding: 0.8em 1.2em;
+    background-color: #7ed957;
+    color: #5e6681;
+    box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-link {
+    color: #f5f5f5;
+    display: block;
+    font-size: .75em;
+    transition: color .3s ease-out;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.input-field:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.btn:hover {
+    background-color: #5e6681;
+    color: #7ed957;
+    box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+
+.btn-link:hover {
+    color: #7ed957;
+}
