@@ -2,7 +2,7 @@
   "name": "organizador-de-tiempo",
   "version": "1.0.0",
   "description": "Una aplicación para organizar el tiempo",
-  "main": "index.html",
+  "main": "main.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server"
@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/cli": "^18.2.11",
     "http-server": "^0.12.3"
   }
 }
