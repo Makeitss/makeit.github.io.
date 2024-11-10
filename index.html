@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make It - Login</title>
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/img/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='assets/img/apple-icon.png') }}">
     <link rel="stylesheet" href="2styles4.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
             <h4 class="title">Log In!</h4>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    <div class="alert alert-danger">
+                    <div class="alert alert-info">
                         {{ messages[0] }}
                     </div>
                 {% endif %}
