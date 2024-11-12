@@ -77,5 +77,16 @@
             minDate: "today"
         });
     </script>
+    <script>
+        flatpickr(".datepicker", {
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        function toggleNavbar() {
+            const navbarCollapse = document.querySelector(".navbar-collapse");
+            navbarCollapse.classList.toggle("show");
+        }
+    </script>
 </body>
 </html>
