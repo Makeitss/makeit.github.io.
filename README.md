@@ -4,4 +4,5 @@
 
 ## pagina
 
-![Makeitpage](assets/img/img.png "qr Makeit")
+<img src="assets/img/img.png" alt="qr Makeit" title="Makeitpage" width="200" height="200"/>
+
