@@ -243,8 +243,8 @@ input, button, p {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Estilos del Navbar */
 .navbar {
+    /* Elimina la posición fija */
     position: static;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
@@ -255,9 +255,9 @@ input, button, p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 30px 5%; /* Añade espacio en los lados */
+    max-width: 1200px; /* Limita el ancho máximo */
+    margin: 0 auto; 
 }
 
 .navbar-brand {
@@ -268,8 +268,14 @@ input, button, p {
 }
 
 .logo {
-    height: 40px;
+    height: 40px; /* Ajusta según el tamaño de tu logo */
     margin-right: 10px;
+    vertical-align: middle;
+}
+
+.navbar-brand h1 {
+    font-size: 1.5rem;
+    margin: 0;
     vertical-align: middle;
 }
 
@@ -345,19 +351,13 @@ input, button, p {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .navbar-toggler {
-        display: block;
-    }
-
-    .navbar-collapse {
-        display: none;
+    .navbar .container {
         flex-direction: column;
-        width: 100%;
-        padding: 10px 0;
+        align-items: flex-start;
     }
 
-    .navbar-collapse.show {
-        display: flex;
+    .navbar-brand {
+        margin-bottom: 10px;
     }
 
     .navbar-nav {
@@ -379,4 +379,6 @@ input, button, p {
     font-weight: bold;
     margin-top: 1rem;
 }
+
+
 
