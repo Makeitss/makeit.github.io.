@@ -32,8 +32,38 @@
             </div>
         </div>
     </nav>
-    <div class="main-container">
-        <!-- Resto del contenido de tu página -->
+<div class="main-container">
+        <aside class="sidebar">
+            <section id="task-section">
+                <h2>Agregar Tarea</h2>
+                <form id="task-form">
+                    <label for="task-name">Nombre de la tarea:</label>
+                    <input type="text" name="text" id="task-name" class="input" placeholder="Type here...">
+                    <label for="task-time">Tiempo estimado (horas):</label>
+                    <input type="number" id="task-time" class="input" min="0" step="1" required placeholder="Type here...">
+                    <label for="task-deadline">Fecha de entrega:</label>
+                    <input type="text" id="task-deadline" class="input datepicker" placeholder="Selecciona una fecha">
+                    <button class="custom-button">Agregar</button>
+                </form>
+            </section>
+            <section id="activity-section">
+                <h2>Agregar Actividad</h2>
+                <form id="activity-form">
+                    <label for="activity-name">Nombre de la actividad:</label>
+                    <input type="text" name="text" id="activity-name" class="input" placeholder="Type here...">
+                    <label for="activity-time">Tiempo semanal (horas):</label>
+                    <input type="number" id="activity-time" class="input" min="0" step="1" required placeholder="Type here...">
+                    <button class="custom-button">Agregar</button>
+                </form>
+            </section>
+        </aside>
+        <main>
+            <section id="distribution-section">
+                <h2>Distribución de Tiempo</h2>
+                <div id="task-list"></div>
+                <p id="available-time"></p>
+            </section>
+        </main>
     </div>
     <script src="script.js"></script>
     <script>
