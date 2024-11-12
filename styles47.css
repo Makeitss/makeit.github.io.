@@ -247,7 +247,7 @@ input, button, p {
 .navbar {
     position: static;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: transparent;
     z-index: 1000;
 }
 
