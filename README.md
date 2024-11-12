@@ -4,5 +4,5 @@
 
 ## pagina
 
-<img src="assets/img/img.png" alt="qr Makeit" title="Makeitpage" width="200" height="200"/>
+<img src="assets/img/img.png" alt="qr Makeit" title="Makeitpage" width="500" height="500"/>
 
