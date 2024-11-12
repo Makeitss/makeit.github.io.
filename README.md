@@ -4,6 +4,4 @@
 
 ## pagina
 
-https://makeitss.github.io/makeit.github.io./
-
-
+![Makeitpage](assets/img/img.png "qr Makeit")
