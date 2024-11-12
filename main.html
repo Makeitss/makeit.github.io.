@@ -1,23 +1,29 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
     <link rel="icon" type="image/png" href="assets/img/logo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make It</title>
-    <link rel="stylesheet" href="styles47.css">
+    <link rel="stylesheet" href="styles48.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!--     Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Freshman&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <a href="#" class="navbar-brand">
                 <img src="assets/img/logo.png" alt="Logo de Make It" class="logo">
+                <span>Make It</span>
             </a>
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation" onclick="toggleNavbar()">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse">
@@ -32,7 +38,7 @@
             </div>
         </div>
     </nav>
-<div class="main-container">
+    <div class="main-container">
         <aside class="sidebar">
             <section id="task-section">
                 <h2>Agregar Tarea</h2>
@@ -71,12 +77,6 @@
             dateFormat: "Y-m-d",
             minDate: "today"
         });
-
-        function toggleNavbar() {
-            const navbarCollapse = document.querySelector(".navbar-collapse");
-            navbarCollapse.classList.toggle("show");
-        }
     </script>
 </body>
 </html>
-
