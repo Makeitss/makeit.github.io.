@@ -6,3 +6,7 @@
 
 <img src="assets/img/img.png" alt="qr Makeit" title="Makeitpage" width="500" height="500"/>
 
+o 
+
+https://makeitss.github.io/makeit.github.io./
+
