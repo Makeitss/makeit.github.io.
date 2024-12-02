@@ -103,9 +103,6 @@ function updateCalendar() {
                 if (hasTaskOnDate(currentYear, currentMonth, date)) {
                     cell.classList.add('has-task');
                 }
-                if (hasTaskOnPreviousDate(currentYear, currentMonth, date)) {
-                    cell.classList.add('task-limit');
-                }
                 row.appendChild(cell);
                 date++;
             }
@@ -120,19 +117,6 @@ function hasTaskOnDate(year, month, day) {
         return taskDate.getFullYear() === year &&
                taskDate.getMonth() === month &&
                taskDate.getDate() === day;
-    });
-}
-
-function hasTaskOnPreviousDate(year, month, day) {
-    const currentDate = new Date(year, month, day);
-    const previousDate = new Date(currentDate);
-    previousDate.setDate(previousDate.getDate() + 1);
-    
-    return tasks.some(task => {
-        const taskDate = new Date(task.date);
-        return taskDate.getFullYear() === previousDate.getFullYear() &&
-               taskDate.getMonth() === previousDate.getMonth() &&
-               taskDate.getDate() === previousDate.getDate();
     });
 }
 
