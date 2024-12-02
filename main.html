@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make It</title>
-    <link rel="stylesheet" href="styles50.css">
+    <link rel="stylesheet" href="styles51.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!--     Fonts and icons     -->
@@ -63,21 +63,79 @@
             </section>
         </aside>
         <main>
-        <table id="calendar">
-            <thead>
-               <caption></caption>
-               <tr>
-                   <th>Lun</th>
-                   <th>Mar</th>
-                   <th>Mie</th>
-                   <th>Jue</th>
-                   <th>Vie</th>
-                   <th>Sab</th>
-                   <th>Dom</th>
-              </tr>
-           </thead>
-           <tbody></tbody>
-        </table>
+            <section id="distribution-section">
+                <h2>Distribución de Tiempo</h2>
+                <div id="task-list"></div>
+                <p id="available-time"></p>
+            </section>
+        </main>
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="month-nav prev">&lt;</button>
+                <h2 class="current-month">December</h2>
+                <button class="month-nav next">&gt;</button>
+            </div>
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="prev-month">26</td>
+                        <td class="prev-month">27</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td class="current-day">10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td class="next-month">1</td>
+                        <td class="next-month">2</td>
+                        <td class="next-month">3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="script.js"></script>
     <script>
