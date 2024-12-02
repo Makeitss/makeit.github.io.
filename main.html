@@ -1,20 +1,12 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make It</title>
-    <link rel="stylesheet" href="styles51.css">
+    <title>Make It - Task Manager</title>
+    <link rel="stylesheet" href="styles52.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <!--     Fonts and icons     -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Freshman&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
@@ -37,28 +29,29 @@
             </div>
         </div>
     </nav>
+
     <div class="main-container">
         <aside class="sidebar">
             <section id="task-section">
                 <h2>Agregar Tarea</h2>
                 <form id="task-form">
                     <label for="task-name">Nombre de la tarea:</label>
-                    <input type="text" name="text" id="task-name" class="input" placeholder="Type here...">
+                    <input type="text" id="task-name" class="input" placeholder="Type here..." required>
                     <label for="task-time">Tiempo estimado (horas):</label>
-                    <input type="number" id="task-time" class="input" min="0" step="1" required placeholder="Type here...">
+                    <input type="number" id="task-time" class="input" min="0" step="0.5" required placeholder="Type here...">
                     <label for="task-deadline">Fecha de entrega:</label>
-                    <input type="text" id="task-deadline" class="input datepicker" placeholder="Selecciona una fecha">
-                    <button class="custom-button">Agregar</button>
+                    <input type="text" id="task-deadline" class="input datepicker" placeholder="Selecciona una fecha" required>
+                    <button type="submit" class="custom-button">Agregar</button>
                 </form>
             </section>
             <section id="activity-section">
                 <h2>Agregar Actividad</h2>
                 <form id="activity-form">
                     <label for="activity-name">Nombre de la actividad:</label>
-                    <input type="text" name="text" id="activity-name" class="input" placeholder="Type here...">
+                    <input type="text" id="activity-name" class="input" placeholder="Type here..." required>
                     <label for="activity-time">Tiempo semanal (horas):</label>
-                    <input type="number" id="activity-time" class="input" min="0" step="1" required placeholder="Type here...">
-                    <button class="custom-button">Agregar</button>
+                    <input type="number" id="activity-time" class="input" min="0" step="0.5" required placeholder="Type here...">
+                    <button type="submit" class="custom-button">Agregar</button>
                 </form>
             </section>
         </aside>
@@ -68,92 +61,45 @@
                 <div id="task-list"></div>
                 <p id="available-time"></p>
             </section>
+            <section id="calendar-section">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="month-nav prev">&lt;</button>
+                        <h2 class="current-month">December</h2>
+                        <button class="month-nav next">&gt;</button>
+                    </div>
+                    <table class="calendar">
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Calendar days will be dynamically inserted here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </main>
-        <div class="calendar-container">
-            <div class="calendar-header">
-                <button class="month-nav prev">&lt;</button>
-                <h2 class="current-month">December</h2>
-                <button class="month-nav next">&gt;</button>
-            </div>
-            <table class="calendar">
-                <thead>
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="prev-month">26</td>
-                        <td class="prev-month">27</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td class="current-day">10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                        <td>25</td>
-                        <td>26</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>28</td>
-                        <td>29</td>
-                        <td>30</td>
-                        <td>31</td>
-                        <td class="next-month">1</td>
-                        <td class="next-month">2</td>
-                        <td class="next-month">3</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
+
     <script src="script.js"></script>
     <script>
         flatpickr(".datepicker", {
             dateFormat: "Y-m-d",
             minDate: "today"
         });
+
+        function toggleNavbar() {
+            const navbarCollapse = document.querySelector(".navbar-collapse");
+            navbarCollapse.classList.toggle("show");
+        }
     </script>
-        <script>
-            flatpickr(".datepicker", {
-                dateFormat: "Y-m-d",
-                minDate: "today"
-            });
-    
-            function toggleNavbar() {
-                const navbarCollapse = document.querySelector(".navbar-collapse");
-                navbarCollapse.classList.toggle("show");
-            }
-        </script>
 </body>
 </html>

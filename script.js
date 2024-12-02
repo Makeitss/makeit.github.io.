@@ -1,15 +1,19 @@
 let tasks = [];
 let activities = [];
-var actual = new Date();
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
 
 // Event listeners for form submissions
 document.getElementById('task-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('task-name').value;
     const time = parseFloat(document.getElementById('task-time').value);
-    if (name && time > 0) {
-        tasks.push({ name, estimatedTime: time });
+    const date = document.getElementById('task-deadline').value;
+    if (name && time > 0 && date) {
+        tasks.push({ name, estimatedTime: time, date: new Date(date) });
         updateTaskList();
+        updateCalendar();
         this.reset();
     }
 });
@@ -57,6 +61,7 @@ function updateTaskList() {
         taskItem.innerHTML = `
             <span>${task.name}</span>
             <span>${task.allocatedTime.toFixed(2)} horas</span>
+            <span>${task.date.toLocaleDateString()}</span>
         `;
         taskList.appendChild(taskItem);
     });
@@ -65,67 +70,75 @@ function updateTaskList() {
 }
 
 // Calendar functions
-function mostrarCalendario(year, month) {
-    var now = new Date(year, month - 1, 1);
-    var last = new Date(year, month, 0);
-    var primerDiaSemana = (now.getDay() == 0) ? 7 : now.getDay();
-    var ultimoDiaMes = last.getDate();
-    var dia = 0;
-    var resultado = "<tr bgcolor='silver'>";
-    var diaActual = 0;
-    var last_cell = primerDiaSemana + ultimoDiaMes;
-
-    for (var i = 1; i <= 42; i++) {
-        if (i == primerDiaSemana) {
-            dia = 1;
-        }
-        if (i < primerDiaSemana || i >= last_cell) {
-            resultado += "<td>&nbsp;</td>";
-        } else {
-            if (dia == actual.getDate() && month == actual.getMonth() + 1 && year == actual.getFullYear())
-                resultado += "<td class='hoy'>" + dia + "</td>";
-            else
-                resultado += "<td>" + dia + "</td>";
-            dia++;
-        }
-        if (i % 7 == 0) {
-            if (dia > ultimoDiaMes)
-                break;
-            resultado += "</tr><tr>\n";
-        }
-    }
-    resultado += "</tr>";
-
-    var meses = Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-
-    var nextMonth = month + 1;
-    var nextYear = year;
-    if (month + 1 > 12) {
-        nextMonth = 1;
-        nextYear = year + 1;
-    }
-
-    var prevMonth = month - 1;
-    var prevYear = year;
-    if (month - 1 < 1) {
-        prevMonth = 12;
-        prevYear = year - 1;
-    }
-
-    var caption = document.getElementById("calendar").getElementsByTagName("caption")[0];
-    caption.innerHTML = `
-        <div>${meses[month - 1]} / ${year}</div>
-        <div>
-            <a onclick='mostrarCalendario(${prevYear},${prevMonth})'>&lt;</a>
-            <a onclick='mostrarCalendario(${nextYear},${nextMonth})'>&gt;</a>
-        </div>
-    `;
+function updateCalendar() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
     
-    document.getElementById("calendar").getElementsByTagName("tbody")[0].innerHTML = resultado;
+    document.querySelector('.current-month').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+    
+    let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    let daysInMonth = 32 - new Date(currentYear, currentMonth, 32).getDate();
+    
+    let date = 1;
+    let tbody = document.querySelector('.calendar tbody');
+    tbody.innerHTML = '';
+    
+    for (let i = 0; i < 6; i++) {
+        let row = document.createElement('tr');
+        for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDay) {
+                let cell = document.createElement('td');
+                cell.classList.add('prev-month');
+                row.appendChild(cell);
+            } else if (date > daysInMonth) {
+                let cell = document.createElement('td');
+                cell.classList.add('next-month');
+                row.appendChild(cell);
+            } else {
+                let cell = document.createElement('td');
+                cell.textContent = date;
+                if (date === currentDate.getDate() && currentMonth === currentDate.getMonth() && currentYear === currentDate.getFullYear()) {
+                    cell.classList.add('current-day');
+                }
+                if (hasTaskOnDate(currentYear, currentMonth, date)) {
+                    cell.classList.add('has-task');
+                }
+                row.appendChild(cell);
+                date++;
+            }
+        }
+        tbody.appendChild(row);
+    }
 }
+
+function hasTaskOnDate(year, month, day) {
+    return tasks.some(task => {
+        const taskDate = new Date(task.date);
+        return taskDate.getFullYear() === year &&
+               taskDate.getMonth() === month &&
+               taskDate.getDate() === day;
+    });
+}
+
+document.querySelector('.month-nav.prev').addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    updateCalendar();
+});
+
+document.querySelector('.month-nav.next').addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    updateCalendar();
+});
 
 // Initialize calendar
 document.addEventListener('DOMContentLoaded', function() {
-    var currentDate = new Date();
-    mostrarCalendario(currentDate.getFullYear(), currentDate.getMonth() + 1);
+    updateCalendar();
 });
