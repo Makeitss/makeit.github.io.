@@ -4,8 +4,24 @@ let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 
-// Event listeners for form submissions
-document.getElementById('task-form').addEventListener('submit', function(e) {
+document.addEventListener('DOMContentLoaded', function() {
+    initializeFlatpickr();
+    updateCalendar();
+
+    document.getElementById('task-form').addEventListener('submit', handleTaskSubmit);
+    document.getElementById('activity-form').addEventListener('submit', handleActivitySubmit);
+    document.querySelector('.month-nav.prev').addEventListener('click', previousMonth);
+    document.querySelector('.month-nav.next').addEventListener('click', nextMonth);
+});
+
+function initializeFlatpickr() {
+    flatpickr(".datepicker", {
+        dateFormat: "Y-m-d",
+        minDate: "today"
+    });
+}
+
+function handleTaskSubmit(e) {
     e.preventDefault();
     const name = document.getElementById('task-name').value;
     const time = parseFloat(document.getElementById('task-time').value);
@@ -16,9 +32,9 @@ document.getElementById('task-form').addEventListener('submit', function(e) {
         updateCalendar();
         this.reset();
     }
-});
+}
 
-document.getElementById('activity-form').addEventListener('submit', function(e) {
+function handleActivitySubmit(e) {
     e.preventDefault();
     const name = document.getElementById('activity-name').value;
     const time = parseFloat(document.getElementById('activity-time').value);
@@ -27,11 +43,10 @@ document.getElementById('activity-form').addEventListener('submit', function(e) 
         updateTaskList();
         this.reset();
     }
-});
+}
 
-// Task and activity management functions
 function calculateAvailableTime() {
-    const totalWeeklyHours = 168; // 24 hours * 7 days
+    const totalWeeklyHours = 168;
     const usedTime = activities.reduce((sum, activity) => sum + activity.weeklyTime, 0);
     return totalWeeklyHours - usedTime;
 }
@@ -69,10 +84,9 @@ function updateTaskList() {
     document.getElementById('available-time').textContent = `Tiempo disponible semanal: ${calculateAvailableTime().toFixed(2)} horas`;
 }
 
-// Calendar functions
 function updateCalendar() {
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
+    const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     
     document.querySelector('.current-month').textContent = `${monthNames[currentMonth]} ${currentYear}`;
     
@@ -103,6 +117,9 @@ function updateCalendar() {
                 if (hasTaskOnDate(currentYear, currentMonth, date)) {
                     cell.classList.add('has-task');
                 }
+                if (hasTaskOnPreviousDate(currentYear, currentMonth, date)) {
+                    cell.classList.add('task-limit');
+                }
                 row.appendChild(cell);
                 date++;
             }
@@ -120,25 +137,33 @@ function hasTaskOnDate(year, month, day) {
     });
 }
 
-document.querySelector('.month-nav.prev').addEventListener('click', () => {
+function hasTaskOnPreviousDate(year, month, day) {
+    const currentDate = new Date(year, month, day);
+    const previousDate = new Date(currentDate);
+    previousDate.setDate(previousDate.getDate() + 1);
+    
+    return tasks.some(task => {
+        const taskDate = new Date(task.date);
+        return taskDate.getFullYear() === previousDate.getFullYear() &&
+               taskDate.getMonth() === previousDate.getMonth() &&
+               taskDate.getDate() === previousDate.getDate();
+    });
+}
+
+function previousMonth() {
     currentMonth--;
     if (currentMonth < 0) {
         currentMonth = 11;
         currentYear--;
     }
     updateCalendar();
-});
+}
 
-document.querySelector('.month-nav.next').addEventListener('click', () => {
+function nextMonth() {
     currentMonth++;
     if (currentMonth > 11) {
         currentMonth = 0;
         currentYear++;
     }
     updateCalendar();
-});
-
-// Initialize calendar
-document.addEventListener('DOMContentLoaded', function() {
-    updateCalendar();
-});
+}
